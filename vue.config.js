@@ -3,11 +3,14 @@ module.exports = {
     loaderOptions: {
       less: {
         modifyVars: {
-          "primary-color": "#151B22",
-          "secondary-color": "#396500",
+          "primary-color": "#396500",
+          "secondary-color": "#151B22",
           "accent-color": "#8DC63F"
         },
         javascriptEnabled: true
+      },
+      sass: {
+        prependData: `@import "@/assets/scss/_variables.scss";`
       }
     }
   }
