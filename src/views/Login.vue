@@ -101,7 +101,7 @@ export default {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: $secondary-color;
+  background-color: $sd;
 
   .login-form {
     padding: 20px;

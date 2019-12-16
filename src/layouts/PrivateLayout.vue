@@ -1,22 +1,7 @@
 <template>
   <a-layout id="private-layout">
-    <a-layout-sider :trigger="null" collapsible v-model="collapsed">
-      <div class="logo" />
-      <a-menu theme="dark" mode="inline" :defaultSelectedKeys="['1']">
-        <a-menu-item key="1">
-          <a-icon type="user" />
-          <span>nav 1</span>
-        </a-menu-item>
-        <a-menu-item key="2">
-          <a-icon type="video-camera" />
-          <span>nav 2</span>
-        </a-menu-item>
-        <a-menu-item key="3">
-          <a-icon type="upload" />
-          <span>nav 3</span>
-        </a-menu-item>
-      </a-menu>
-    </a-layout-sider>
+    <Sider v-bind:collapsed="collapsed" />
+
     <a-layout>
       <a-layout-header style="background: #fff; padding: 0">
         <a-icon
@@ -34,14 +19,20 @@
           minHeight: '280px'
         }"
       >
-        Content
+        <slot />
       </a-layout-content>
     </a-layout>
   </a-layout>
 </template>
+
 <script>
+import Sider from "./components/Sider.vue";
+
 export default {
   name: "PrivateLayout",
+  components: {
+    Sider
+  },
   data() {
     return {
       collapsed: false
@@ -49,7 +40,8 @@ export default {
   }
 };
 </script>
-<style>
+
+<style lang="scss">
 #private-layout {
   height: 100%;
 }
