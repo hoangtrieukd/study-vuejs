@@ -3,22 +3,22 @@
     <Sider v-bind:collapsed="collapsed" />
 
     <a-layout>
-      <a-layout-header style="background: #fff; padding: 0">
+      <a-layout-header style="background: #fff; padding: 0px">
         <a-icon
           class="trigger"
           :type="collapsed ? 'menu-unfold' : 'menu-fold'"
           @click="() => (collapsed = !collapsed)"
         />
+
+        <a-popover placement="bottomRight">
+          <template slot="content" style="cursor: pointer">
+            <span class="user-setting" @click="logout">Logout</span>
+          </template>
+          <a-avatar class="avatar">USER</a-avatar>
+        </a-popover>
       </a-layout-header>
 
-      <a-layout-content
-        :style="{
-          margin: '24px 16px',
-          padding: '24px',
-          background: '#fff',
-          minHeight: '280px'
-        }"
-      >
+      <a-layout-content class="layout-content">
         <slot />
       </a-layout-content>
     </a-layout>
@@ -37,6 +37,12 @@ export default {
     return {
       collapsed: false
     };
+  },
+  methods: {
+    logout() {
+      localStorage.setItem("access-token", "");
+      this.$router.push("login");
+    }
   }
 };
 </script>
@@ -50,13 +56,29 @@ export default {
   font-size: 18px;
   line-height: 64px;
   padding: 0 24px;
-  cursor: pointer;
   transition: color 0.3s;
+  cursor: pointer;
 }
 
-#private-layout .logo {
-  height: 32px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px;
+#private-layout .avatar {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+}
+
+.layout-header {
+  background: white;
+}
+
+.layout-content {
+  margin: 24px 16px;
+  padding: 24px;
+  background: white;
+  min-height: 280px;
+}
+
+.user-setting {
+  cursor: pointer;
 }
 </style>

@@ -87,7 +87,7 @@ export default {
         if (!err) {
           console.log(values);
           localStorage.setItem("access-token", "access-token");
-          this.$router.push({ name: "home" });
+          this.$router.push("/");
         }
       });
     }

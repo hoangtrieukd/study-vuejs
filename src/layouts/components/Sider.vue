@@ -1,6 +1,7 @@
 <template>
   <a-layout-sider :trigger="null" collapsible v-model="collapsed">
     <div class="logo" />
+
     <a-menu mode="inline" :defaultSelectedKeys="['1']">
       <a-menu-item key="1">
         <a-icon type="user" />
@@ -28,3 +29,11 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+.logo {
+  height: 32px;
+  background: red;
+  margin: 16px;
+}
+</style>
